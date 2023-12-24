@@ -10,9 +10,27 @@ speech = LiveSpeech(
     kws="./keywords.list",
 )
 
+conversation_active = False
+
+
+def init_conversation(conversation_active):
+    if conversation_active:
+        print("Conversation already ongoing!")
+        return False
+    # code for starting conversation here (record audio, etc.)
+    print("Conversation started!")
+    return True
+
+
 for phrase in speech:
     if "hello assistant" in str(phrase):
         print("Trigger phrase detected!")
+
+        if not conversation_active:
+            if init_conversation(conversation_active):
+                conversation_active = True
+                continue
+
         # Add additional actions here
 
     # Monitor and print CPU and memory usage
