@@ -33,6 +33,10 @@ for phrase in speech:
 
         # Add additional actions here
 
+    if "done now" in str(phrase):
+        print("Conversation ended!")
+        conversation_active = False
+        continue
     # Monitor and print CPU and memory usage
     cpu_usage = process.cpu_percent()
     memory_usage = process.memory_info().rss  # in bytes
